@@ -29,6 +29,22 @@ class PracticeUITestUITests: XCTestCase {
     }
     
     func testExample() {
+        
+
+        
+        let app = XCUIApplication()
+        XCTAssertEqual(app.tables.count, 1)
+        XCTAssertEqual(app.buttons.count, 1)
+        
+        let table = app.tables.element(boundBy: 0)
+        XCTAssertEqual(table.cells.count, 0)
+        
+        app.buttons["Get Table"].tap()
+        app.tables.staticTexts["This is row No. 9"].swipeUp()
+        XCTAssertEqual(table.cells.count, 10)
+        //XCTAssertEqual(table.cells.count, 11)
+
+        
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
